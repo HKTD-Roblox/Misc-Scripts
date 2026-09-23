@@ -23,7 +23,6 @@ local function Notify(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = title,
         Text = text,
-        Icon = "rbxassetid://4483345998",
         Duration = 2
     })
     
