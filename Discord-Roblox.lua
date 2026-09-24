@@ -1,7 +1,7 @@
 local HttpService = game:GetService("HttpService")
 local StarterGui = game:GetService("StarterGui")
 
-local CHANNEL_ID = "1234567890123456789"
+local CHANNEL_ID = "1552528844358156449"
 local POLL_INTERVAL = 2
 
 local lastMsgId = nil
