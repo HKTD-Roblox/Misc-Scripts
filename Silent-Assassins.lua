@@ -289,19 +289,12 @@ fTab:AddSlider({
 
 local iTab = window:AddFolder("Credit & Info")
 
-iTab:AddLabel({text = "Make By HKTD"})
-
-iTab:AddButton({
-    text = "Copy Link TikTok", 
-    callback = function() 
-        setclipboard("https://www.tiktok.com/@hktd_roblox") 
-        Notify("DISCORD", "Link Copied to Clipboard!") 
-    end
+iTab:AddLabel({text = "Make By Zorcex"})
 
 iTab:AddButton({
     text = "Copy Link Discord", 
     callback = function() 
-        setclipboard("https://discord.gg/RNgyh8MhxN") 
+        setclipboard("https://dsc.gg/zorcex") 
         Notify("TIKTOK", "Link Copied to Clipboard!") 
     end
 })
