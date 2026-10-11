@@ -3,15 +3,15 @@ local function ForceRename()
     local char = Player.Character or Player.CharacterAdded:Wait()
     local head = char:WaitForChild("Head")
     local hum = char:WaitForChild("Humanoid")       
-    Player.DisplayName = "HKTD HUB PREMIUM"
-    hum.DisplayName = "HKTD HUB PREMIUM"        
+    Player.DisplayName = "ZORCEX HUB PREMIUM"
+    hum.DisplayName = "ZORCEX HUB PREMIUM"        
     task.spawn(function()
         while char and char.Parent do
             local color = Color3.fromHSV(tick() % 5 / 5, 1, 1)                                    
-            hum.DisplayName = "HKTD HUB PREMIUM"                                  
+            hum.DisplayName = "ZORCEX HUB PREMIUM"                                  
             for _, v in pairs(char:GetDescendants()) do
                 if v:IsA("TextLabel") and (v.Text == Player.Name or v.Text == Player.DisplayName or v.Text:find(Player.Name)) then
-                    v.Text = "HKTD HUB PREMIUM"
+                    v.Text = "ZORCEX HUB PREMIUM"
                     v.TextColor3 = color
                 end
             end
@@ -25,8 +25,8 @@ Player.CharacterAdded:Connect(function()
     ForceRename()
 end)
 
-if game.CoreGui:FindFirstChild("HKTD_SUPREME_V65") then
-    game.CoreGui:FindFirstChild("HKTD_SUPREME_V65"):Destroy()
+if game.CoreGui:FindFirstChild("ZORCEX_SUPREME_V65") then
+    game.CoreGui:FindFirstChild("ZORCEX_SUPREME_V65"):Destroy()
 end
 
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
@@ -91,7 +91,7 @@ local function ServerHop()
     if #x > 0 then
         TeleportService:TeleportToPlaceInstance(game.PlaceId, x[math.random(1, #x)])
     else
-        Fluent:Notify({Title = "HKTD HUB", Content = "Không tìm thấy server khác!", Duration = 3})
+        Fluent:Notify({Title = "ZORCEX HUB", Content = "Không tìm thấy server khác!", Duration = 3})
     end
 end
 
@@ -128,14 +128,14 @@ local function RunSellSequence()
     _G.LemonAutoFarm = oldFarm
 end
 
-local SG = Instance.new("ScreenGui", game.CoreGui); SG.Name = "HKTD_SUPREME_V65"
+local SG = Instance.new("ScreenGui", game.CoreGui); SG.Name = "ZORCEX_SUPREME_V65"
 local MainBtn = Instance.new("TextButton", SG)
-MainBtn.Size = UDim2.fromOffset(260, 50); MainBtn.Position = UDim2.new(0.5, -130, 0.05, 0); MainBtn.BackgroundColor3 = Color3.fromRGB(15,15,15); MainBtn.Text = "HKTD HUB PREMIUM"; MainBtn.TextColor3 = Color3.new(1,1,1); MainBtn.Font = "GothamBold"; MainBtn.TextSize = 18; MainBtn.Visible = false; MainBtn.Draggable = true
+MainBtn.Size = UDim2.fromOffset(260, 50); MainBtn.Position = UDim2.new(0.5, -130, 0.05, 0); MainBtn.BackgroundColor3 = Color3.fromRGB(15,15,15); MainBtn.Text = "ZORCEX HUB PREMIUM"; MainBtn.TextColor3 = Color3.new(1,1,1); MainBtn.Font = "GothamBold"; MainBtn.TextSize = 18; MainBtn.Visible = false; MainBtn.Draggable = true
 Instance.new("UICorner", MainBtn).CornerRadius = UDim.new(0, 12); local ms = Instance.new("UIStroke", MainBtn); ms.Thickness = 3
 task.spawn(function() while task.wait() do ms.Color = Color3.fromHSV(tick()%3/3, 1, 1) end end)
 
 local function StartScript()
-    local Window = Fluent:CreateWindow({ Title = "HKTD HUB PREMIUM", SubTitle = "Make By HKTD", TabWidth = 140, Size = UDim2.fromOffset(580, 520), Theme = "Dark", MinimizeKey = Enum.KeyCode.RightControl })
+    local Window = Fluent:CreateWindow({ Title = "ZORCEX HUB PREMIUM", SubTitle = "Make By ZORCEX", TabWidth = 140, Size = UDim2.fromOffset(580, 520), Theme = "Dark", MinimizeKey = Enum.KeyCode.RightControl })
         local Tabs = {
         Status = Window:AddTab({ Title = "Thông báo", Icon = "info" }),
         Farm = Window:AddTab({ Title = "Auto farm", Icon = "skull" }),
@@ -192,7 +192,7 @@ end)
 
 -- --- HIỆN NÚT CAST (VÀ ẨN Z,X,C,V) ---
 for name, pos in pairs(_G.P_Points) do
-    local psg = Instance.new("ScreenGui", game.CoreGui); psg.Name = "HKTD_GUI_"..name
+    local psg = Instance.new("ScreenGui", game.CoreGui); psg.Name = "ZORCEX_GUI_"..name
     local f = Instance.new("Frame", psg); f.Size = UDim2.fromOffset(45,45); f.Position = UDim2.fromOffset(pos.X-22, pos.Y-22); f.Active, f.Draggable = true, true; f.BackgroundColor3 = Color3.fromHSV(tick()%1, 1, 1); f.BackgroundTransparency = 0.4; Instance.new("UICorner", f).CornerRadius = UDim.new(1,0)
     local t = Instance.new("TextLabel", f); t.Size = UDim2.fromScale(1,1); t.Text = name; t.BackgroundTransparency = 1; t.Font = "GothamBold"; t.TextSize = 10; t.TextColor3 = Color3.new(1,1,1)
     
