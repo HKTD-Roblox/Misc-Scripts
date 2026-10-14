@@ -1,5 +1,5 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/liebertsx/Tora-Library/main/src/librarynew", true))()
-local window = library:CreateWindow("HKTD")
+local window = library:CreateWindow("Silent Assassins")
 
 local Settings = {
     WalkSpeed = 16,
@@ -289,13 +289,29 @@ fTab:AddSlider({
 
 local iTab = window:AddFolder("Credit & Info")
 
-iTab:AddLabel({text = "Make By Zorcex"})
+iTab:AddLabel({text = "Made By Zorcex"})
 
 iTab:AddButton({
     text = "Copy Link Discord", 
     callback = function() 
         setclipboard("https://dsc.gg/zorcex") 
-        Notify("TIKTOK", "Link Copied to Clipboard!") 
+        Notify("Zorcex", "Link Copied to Clipboard!") 
+    end
+})
+
+iTab:AddButton({
+    text = "Copy Link YouTube", 
+    callback = function() 
+        setclipboard("https://www.youtube.com/@ZorcexHub") 
+        Notify("Zorcex", "Link Copied to Clipboard!") 
+    end
+})
+
+iTab:AddButton({
+    text = "Copy Link TikTok", 
+    callback = function() 
+        setclipboard("https://www.tiktok.com/@zorcex_hub") 
+        Notify("Zorcex", "Link Copied to Clipboard!") 
     end
 })
 
