@@ -6,6 +6,7 @@ local SoundService = game:GetService("SoundService")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
+local isEnabled = false
 local isPinned = false
 local isDragging = false
 local hasMoved = false
@@ -72,10 +73,13 @@ backgroundMusic.SoundId = "rbxassetid://1841426381"
 backgroundMusic.Volume = 1
 backgroundMusic.Looped = true
 backgroundMusic.Parent = SoundService
-backgroundMusic:Play()
 
 local function getPulseColor()
-	return Color3.fromRGB(0, 255, 80)
+	if isEnabled then
+		return Color3.fromRGB(0, 255, 80)
+	else
+		return Color3.fromRGB(255, 40, 40)
+	end
 end
 
 local function createPulse()
@@ -113,15 +117,22 @@ local function playClickSound()
 	end)
 end
 
+local function setEnabled(state)
+	isEnabled = state
+	if isEnabled then
+		backgroundMusic:Play()
+	else
+		backgroundMusic:Stop()
+	end
+end
+
 MainButton.InputBegan:Connect(function(input)
 	if isPinned then return end
-
 	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
 		isDragging = true
 		hasMoved = false
 		dragStartPos = input.Position
 		buttonStartPos = MainButton.Position
-
 		input.Changed:Connect(function()
 			if input.UserInputState == Enum.UserInputState.End then
 				isDragging = false
@@ -136,7 +147,6 @@ UserInputService.InputChanged:Connect(function(input)
 			if (input.Position - dragStartPos).Magnitude > 8 then
 				hasMoved = true
 			end
-
 			local delta = input.Position - dragStartPos
 			MainButton.Position = UDim2.new(
 				buttonStartPos.X.Scale,
@@ -159,8 +169,8 @@ MainButton.Activated:Connect(function()
 		hasMoved = false
 		return
 	end
-
 	playClickSound()
+	setEnabled(not isEnabled)
 end)
 
 PinButton.Activated:Connect(function()
@@ -176,17 +186,14 @@ RunService.RenderStepped:Connect(function()
 	for i = #pulseList, 1, -1 do
 		local data = pulseList[i]
 		local object = data.Object
-
 		if not object.Parent then
 			table.remove(pulseList, i)
 		else
 			local progress = (tick() - data.Start) / 0.8
 			local scale = 1 + 0.35 * progress
-
 			object.Size = UDim2.fromScale(scale, scale)
 			object.BackgroundColor3 = getPulseColor()
 			object.BackgroundTransparency = 0.45 + 0.55 * progress
-
 			if progress >= 1 then
 				object:Destroy()
 				table.remove(pulseList, i)
